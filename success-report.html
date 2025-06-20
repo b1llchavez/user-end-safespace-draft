@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace PH - Report Submitted</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <img src="https://i.ibb.co/qYYZs46L/logo.png" alt="SafeSpace PH Logo" class="logo">
+                <span class="app-name">SafeSpace PH</span>
+                <span class="menu-icon material-icons" id="menuToggle">menu</span>
+            </div>
+            <div class="menu" id="sidebarMenu">
+                <a href="index.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </div>
+                </a>
+                <a href="report-violation.html" class="menu-link">
+                    <div class="menu-item active">
+                        <span class="material-icons">gavel</span>
+                        Report Violation
+                    </div>
+                </a>
+                <a href="book-appointment.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">book_online</span>
+                        Book Appointment
+                    </div>
+                </a>
+                <a href="manage-appointments.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">event</span>
+                        Manage Appointments
+                    </div>
+                </a>
+                <a href="privacy-policy.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">lock</span>
+                        Privacy Policy
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="top-bar-with-header">
+                <div class="form-header-section">
+                    <h1>Report Violation Form</h1>
+                    <p class="subtitle">WE CAN HELP TO PROTECT YOU.</p>
+                </div>
+                <div class="user-info">
+                    <span class="user-avatar">BM</span>
+                    <span class="username">Bill</span>
+                    <span class="material-icons expand-icon">expand_more</span>
+                </div>
+            </div>
+            <div class="success-message-section">
+                <div class="success-card">
+                    <span class="material-icons check-icon">check_circle</span>
+                    <h2>Report Submitted Successfully</h2>
+                    <p>Thank you for sharing your report. Our team has received your submission and will review it with care and confidentiality.</p>
+                    <p>If you provided your contact information, we may reach out for further details or updates. Your safety and privacy are our top priorities.</p>
+                    <p class="you-may-now">YOU MAY NOW:</p>
+                    <a href="book-appointment.html" class="success-button primary">BOOK A FREE CONSULTATION</a>
+                    <a href="index.html" class="success-button secondary">Return to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebarMenu = document.getElementById('sidebarMenu');
+
+            menuToggle.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent the click from immediately propagating to the document
+                sidebarMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!sidebarMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    sidebarMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

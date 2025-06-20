@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace PH - Select Time</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <img src="https://i.ibb.co/qYYZs46L/logo.png" alt="SafeSpace PH Logo" class="logo">
+                <span class="app-name">SafeSpace PH</span>
+                <span class="menu-icon material-icons" id="menuToggle">menu</span>
+            </div>
+            <div class="menu" id="sidebarMenu">
+                <a href="index.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </div>
+                </a>
+                <a href="report-violation.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">gavel</span>
+                        Report Violation
+                    </div>
+                </a>
+                <a href="book-appointment.html" class="menu-link active">
+                    <div class="menu-item">
+                        <span class="material-icons">book_online</span>
+                        Book Appointment
+                    </div>
+                </a>
+                <a href="manage-appointments.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">event</span>
+                        Manage Appointments
+                    </div>
+                </a>
+                <a href="privacy-policy.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">lock</span>
+                        Privacy Policy
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="top-bar-with-header">
+                <div class="form-header-section">
+                    <h1>Select a Time</h1>
+                    <p class="subtitle">CHOOSE YOUR PREFERRED TIME.</p>
+                </div>
+                <div class="user-info">
+                    <span class="user-avatar">BM</span>
+                    <span class="username">Bill</span>
+                    <span class="material-icons expand-icon">expand_more</span>
+                </div>
+            </div>
+            <div class="appointment-section">
+                <div class="appointment-card-large custom-appointment-card">
+                    <div class="appointment-left-panel">
+                        <div class="logo-and-title">
+                            <img src="https://i.ibb.co/qYYZs46L/logo.png" alt="SafeSpace PH Logo" class="logo-lg">
+                            <div class="brand-title">SafeSpace PH</div>
+                        </div>
+                        <div class="user-profile-summary">
+                            <span class="user-avatar">BM</span>
+                            <div class="user-details-text">
+                                <span class="username">Bill Mamorno</span>
+                            </div>
+                        </div>
+                        <div class="step-label">STEP 2</div>
+                        <div class="select-date-text left-select-date">Select your preferred time.</div>
+                        <div class="vertical-stepper">
+                            <div class="step">
+                                <span class="material-icons">calendar_today</span>
+                                <span>Date</span>
+                            </div>
+                            <div class="step active">
+                                <span class="material-icons">schedule</span>
+                                <span>Time</span>
+                            </div>
+                            <div class="step">
+                                <span class="material-icons">person</span>
+                                <span>Personal Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="appointment-right-panel">
+                        <div class="choose-date-header">
+                            <span class="choose-date-title">Saturday, October 18</span>
+                        </div>
+                        <div class="time-slots-container">
+                            <div class="time-slots">
+                                <button class="time-slot-button">5:30 PM</button>
+                                <button class="time-slot-button">6:30 PM</button>
+                                <button class="time-slot-button">7:30 PM</button>
+                                <button class="time-slot-button">8:30 PM</button>
+                                <button class="time-slot-button">9:30 PM</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebarMenu = document.getElementById('sidebarMenu');
+            const timeSlots = document.querySelectorAll('.time-slot-button');
+
+            menuToggle.addEventListener('click', function(event) {
+                event.stopPropagation();
+                sidebarMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!sidebarMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    sidebarMenu.classList.remove('active');
+                }
+            });
+
+            // Time slot selection with redirect
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', function() {
+                    timeSlots.forEach(s => s.classList.remove('selected'));
+                    this.classList.add('selected');
+                    // Add small delay before redirect to show the selection
+                    setTimeout(() => {
+                        window.location.href = 'book-step3.html';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

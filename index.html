@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace PH - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <img src="https://i.ibb.co/qYYZs46L/logo.png" alt="SafeSpace PH Logo" class="logo">
+                <span class="app-name">SafeSpace PH</span>
+                <span class="menu-icon material-icons" id="menuToggle">menu</span>
+            </div>
+            <div class="menu" id="sidebarMenu">
+                <a href="index.html" class="menu-link">
+                    <div class="menu-item active">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </div>
+                </a>
+                <a href="report-violation.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">gavel</span>
+                        Report Violation
+                    </div>
+                </a>
+                <a href="book-appointment.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">book_online</span>
+                        Book Appointment
+                    </div>
+                </a>
+                <a href="manage-appointments.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">event</span>
+                        Manage Appointments
+                    </div>
+                </a>
+                <a href="privacy-policy.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">lock</span>
+                        Privacy Policy
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="top-bar-with-header">
+                <div class="form-header-section">
+                    <h1>Your Safe Space.</h1>
+                    <p class="subtitle">WELCOME TO YOUR SAFESPACE DASHBOARD.</p>
+                </div>
+                <div class="user-info">
+                    <span class="user-avatar">BM</span>
+                    <span class="username">Bill</span>
+                    <span class="material-icons expand-icon">expand_more</span>
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="section upcoming-appointments">
+                    <h2>UPCOMING APPOINTMENTS</h2>
+                    <div class="appointment-card">
+                        <div class="appointment-date">June 8, 2025</div>
+                        <div class="appointment-details">
+                            <h3>Legal Consultation</h3>
+                            <p>Atty. Maria Santos</p>
+                            <p><span class="material-icons">schedule</span> 2:00 PM</p>
+                            <p><span class="material-icons">videocam</span> Virtual Meeting</p>
+                        </div>
+                    </div>
+                    <div class="appointment-card">
+                        <div class="appointment-date">June 15, 2025</div>
+                        <div class="appointment-details">
+                            <h3>Legal Aid Group Session</h3>
+                            <p>Facilitator: Atty. John Cruz</p>
+                            <p><span class="material-icons">schedule</span> 10:00 AM</p>
+                            <p><span class="material-icons">location_on</span> SafeSpace Legal Center</p>
+                        </div>
+                    </div>
+                    <div class="appointment-card">
+                        <div class="appointment-date">June 22, 2025</div>
+                        <div class="appointment-details">
+                            <h3>Case Review Session</h3>
+                            <p>Atty. Maria Santos</p>
+                            <p><span class="material-icons">schedule</span> 3:30 PM</p>
+                            <p><span class="material-icons">videocam</span> Virtual Meeting</p>
+                        </div>
+                    </div>
+                    <a href="book-appointment.html" class="book-button">BOOK <span class="material-icons">add</span></a>
+                </div>
+                <div class="section recent-reports">
+                    <h2>RECENT REPORTS</h2>
+                    <button class="manage-reports-button">
+                        <span class="material-icons">notes</span> Manage Reports
+                    </button>
+                    <div class="report-card">
+                        <div class="report-status pending">Pending</div>
+                        <h3>Sexual Harassment Case</h3>
+                        <p>Report ID: #2025-0601</p>
+                        <p>Submitted: June 1, 2025</p>
+                        <div class="report-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="report-card">
+                        <div class="report-status in-progress">In Progress</div>
+                        <h3>Domestic Violence</h3>
+                        <p>Report ID: #2025-0528</p>
+                        <p>Submitted: May 28, 2025</p>
+                        <div class="report-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="report-card">
+                        <div class="report-status resolved">Resolved</div>
+                        <h3>Gender Discrimination</h3>
+                        <p>Report ID: #2025-0515</p>
+                        <p>Submitted: May 15, 2025</p>
+                        <div class="report-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js.js"></script>
+</html>

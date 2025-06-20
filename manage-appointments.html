@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace PH - Manage Appointments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <img src="https://i.ibb.co/qYYZs46L/logo.png" alt="SafeSpace PH Logo" class="logo">
+                <span class="app-name">SafeSpace PH</span>
+                <span class="menu-icon material-icons" id="menuToggle">menu</span>
+            </div>
+            <nav class="menu" id="sidebarMenu">
+                <a href="index.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </div>
+                </a>
+                <a href="report-violation.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">gavel</span>
+                        Report Violation
+                    </div>
+                </a>
+                <a href="book-appointment.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">book_online</span>
+                        Book Appointment
+                    </div>
+                </a>
+                <a href="manage-appointments.html" class="menu-link">
+                    <div class="menu-item active">
+                        <span class="material-icons">event</span>
+                        Manage Appointments
+                    </div>
+                </a>
+                <a href="privacy-policy.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">lock</span>
+                        Privacy Policy
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <main class="main-content">
+            <div class="top-bar-with-header">
+                <div class="form-header-section">
+                    <h1>Manage Appointments</h1>
+                    <p class="subtitle">MANAGE YOUR UPCOMING AND PAST APPOINTMENTS</p>
+                </div>
+                <div class="user-info">
+                    <span class="user-avatar">BM</span>
+                    <span class="username">Bill</span>
+                    <span class="material-icons expand-icon">expand_more</span>
+                </div>
+            </div>
+            
+            <section class="table-section">
+                <div class="table-container">
+                    <table class="case-table">
+                        <thead>
+                            <tr>
+                                <th>Appointment Type</th>
+                                <th>Lawyer</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th class="action-header">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Legal Consultation</td>
+                                <td>Atty. Maria Santos</td>
+                                <td>June 8, 2025</td>
+                                <td>2:00 PM</td>
+                                <td><span class="status-badge open">Upcoming</span></td>
+                                <td class="action-buttons">
+                                    <button class="action-button accept">Reschedule</button>
+                                    <button class="action-button reject">Cancel</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Legal Aid Group Session</td>
+                                <td>Atty. John Cruz</td>
+                                <td>June 15, 2025</td>
+                                <td>10:00 AM</td>
+                                <td><span class="status-badge booked">Confirmed</span></td>
+                                <td class="action-buttons">
+                                    <button class="action-button accept">Reschedule</button>
+                                    <button class="action-button reject">Cancel</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Case Review Session</td>
+                                <td>Atty. Maria Santos</td>
+                                <td>June 22, 2025</td>
+                                <td>3:30 PM</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td class="action-buttons">
+                                    <button class="action-button accept" disabled>Reschedule</button>
+                                    <button class="action-button reject" disabled>Cancel</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <nav class="pagination-nav" aria-label="Pagination">
+                    <a href="#" class="pagination-link">Previous</a>
+                    <a href="#" aria-current="page" class="pagination-link active">1</a>
+                    <a href="#" class="pagination-link">2</a>
+                    <a href="#" class="pagination-link">3</a>
+                    <a href="#" class="pagination-link">Next</a>
+                </nav>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <p id="modalMessage" class="modal-message"></p>
+            <div class="modal-actions">
+                <button id="modalConfirmButton" class="action-button">Confirm</button>
+                <button id="modalCancelButton" class="action-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="toast">
+        <p id="toastMessage"></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalOverlay = document.getElementById('customModal');
+            const modalTitleElem = document.getElementById('modalTitle');
+            const modalMessageElem = document.getElementById('modalMessage');
+            const modalConfirmButton = document.getElementById('modalConfirmButton');
+            const modalCancelButton = document.getElementById('modalCancelButton');
+            const toastNotification = document.getElementById('toastNotification');
+            const toastMessageElem = document.getElementById('toastMessage');
+
+            // Modal and Toast functionality
+            function showToast(message, type = 'info') {
+                toastMessageElem.textContent = message;
+                toastNotification.className = `toast ${type}`;
+                toastNotification.classList.add('show');
+                setTimeout(() => {
+                    toastNotification.classList.remove('show');
+                }, 3000);
+            }
+
+            function showModal(title, message, confirmButtonClass, confirmAction) {
+                modalTitleElem.textContent = title;
+                modalMessageElem.innerHTML = message;
+                modalConfirmButton.className = `action-button ${confirmButtonClass}`;
+                modalOverlay.classList.add('show');
+                return new Promise((resolve) => {
+                    modalConfirmButton.onclick = () => {
+                        confirmAction();
+                        hideModal();
+                        resolve(true);
+                    };
+                    modalCancelButton.onclick = () => {
+                        hideModal();
+                        resolve(false);
+                    };
+                });
+            }
+
+            function hideModal() {
+                modalOverlay.classList.remove('show');
+            }
+
+            // Event Listeners
+            document.querySelectorAll('.action-button.accept').forEach(button => {
+                if (!button.disabled) {
+                    button.addEventListener('click', async () => {
+                        const confirmed = await showModal(
+                            'Reschedule Appointment',
+                            'Are you sure you want to reschedule this appointment?',
+                            'confirm-accept',
+                            () => {
+                                showToast('Appointment rescheduling initiated', 'success');
+                            }
+                        );
+                    });
+                }
+            });
+
+            document.querySelectorAll('.action-button.reject').forEach(button => {
+                if (!button.disabled) {
+                    button.addEventListener('click', async () => {
+                        const confirmed = await showModal(
+                            'Cancel Appointment',
+                            'Are you sure you want to cancel this appointment?',
+                            'confirm-reject',
+                            () => {
+                                showToast('Appointment cancelled successfully', 'error');
+                                button.closest('tr').remove();
+                            }
+                        );
+                    });
+                }
+            });
+
+            // Dropdown menu functionality
+            const mainMenuIcon = document.getElementById('mainMenuIcon');
+            const userDropdown = document.getElementById('userDropdown');
+
+            if (mainMenuIcon && userDropdown) {
+                mainMenuIcon.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    userDropdown.classList.toggle('show');
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!userDropdown.contains(event.target) && !mainMenuIcon.contains(event.target)) {
+                        userDropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

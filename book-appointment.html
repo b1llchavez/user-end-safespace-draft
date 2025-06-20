@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace PH - Book Appointment</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <img src="https://i.ibb.co/qYYZs46L/logo.png" alt="SafeSpace PH Logo" class="logo">
+                <span class="app-name">SafeSpace PH</span>
+                <span class="menu-icon material-icons" id="menuToggle">menu</span>
+            </div>
+            <div class="menu" id="sidebarMenu">
+                <a href="index.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </div>
+                </a>
+                <a href="report-violation.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">gavel</span>
+                        Report Violation
+                    </div>
+                </a>
+                <a href="book-appointment.html" class="menu-link active">
+                    <div class="menu-item">
+                        <span class="material-icons">book_online</span>
+                        Book Appointment
+                    </div>
+                </a>
+                <a href="manage-appointments.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">event</span>
+                        Manage Appointments
+                    </div>
+                </a>
+                <a href="privacy-policy.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">lock</span>
+                        Privacy Policy
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="top-bar-with-header">
+                <div class="form-header-section">
+                    <h1>Book an Appointment</h1>
+                    <p class="subtitle">WE ARE HERE TO HELP YOU.</p>
+                </div>
+                <div class="user-info">
+                    <span class="user-avatar">BM</span>
+                    <span class="username">Bill</span>
+                    <span class="material-icons expand-icon">expand_more</span>
+                </div>
+            </div>
+            <div class="appointment-section">
+                <div class="appointment-card-large custom-appointment-card">
+                    <div class="appointment-left-panel">
+                        <div class="logo-and-title">
+                            <img src="https://i.ibb.co/qYYZs46L/logo.png" alt="SafeSpace PH Logo" class="logo-lg">
+                            <div class="brand-title">SafeSpace PH</div>
+                        </div>
+                        <div class="user-profile-summary">
+                            <span class="user-avatar">BM</span>
+                            <div class="user-details-text">
+                                <span class="username">Bill Mamorno</span>
+                            </div>
+                        </div>
+                        <div class="step-label">STEP 1</div>
+                        <div class="select-date-text left-select-date">Select your desired date.</div>
+                        <div class="vertical-stepper">
+                            <div class="step active">
+                                <span class="material-icons">calendar_today</span>
+                                <span>Date</span>
+                            </div>
+                            <div class="step">
+                                <span class="material-icons">schedule</span>
+                                <span>Time</span>
+                            </div>
+                            <div class="step">
+                                <span class="material-icons">person</span>
+                                <span>Personal Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="appointment-right-panel">
+                        <div class="choose-date-header">
+                            <span class="choose-date-title">Choose a date:</span>
+                        </div>
+                        <div class="date-picker-container custom-date-picker">
+                            <div class="date-picker-header custom-date-picker-header">
+                                <span class="material-icons nav-arrow">chevron_left</span>
+                                <span class="month-label">October 2025</span>
+                                <span class="material-icons nav-arrow">chevron_right</span>
+                            </div>
+                            <div class="date-picker-grid custom-date-picker-grid">
+                                <span>Su</span>
+                                <span>M</span>
+                                <span>T</span>
+                                <span>W</span>
+                                <span>Th</span>
+                                <span>F</span>
+                                <span>Sa</span>
+                                <span class="dimmed"> </span>
+                                <span class="dimmed"> </span>
+                                <span class="dimmed"> </span>
+                                <span class="dimmed">1</span>
+                                <span class="dimmed">2</span>
+                                <span class="dimmed">3</span>
+                                <span class="dimmed">4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                                <span>11</span>
+                                <span>12</span>
+                                <span>13</span>
+                                <span class="selected">14</span>
+                                <span>15</span>
+                                <span>16</span>
+                                <span>17</span>
+                                <span>18</span>
+                                <span>19</span>
+                                <span>20</span>
+                                <span>21</span>
+                                <span>22</span>
+                                <span>23</span>
+                                <span>24</span>
+                                <span>25</span>
+                                <span>26</span>
+                                <span>27</span>
+                                <span>28</span>
+                                <span>29</span>
+                                <span>30</span>
+                                <span>31</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Appointment Details</h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebarMenu = document.getElementById('sidebarMenu');
+
+            menuToggle.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent the click from immediately propagating to the document
+                sidebarMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!sidebarMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    sidebarMenu.classList.remove('active');
+                }
+            });
+
+            // Date picker interactivity with redirect functionality
+            const datePickerGrid = document.querySelector('.date-picker-grid');
+            if (datePickerGrid) {
+                datePickerGrid.addEventListener('click', function(event) {
+                    const target = event.target;
+                    if (target.tagName === 'SPAN' && !target.classList.contains('dimmed')) {
+                        // Remove 'selected' from previously selected date
+                        const currentSelected = datePickerGrid.querySelector('.selected');
+                        if (currentSelected) {
+                            currentSelected.classList.remove('selected');
+                        }
+                        // Add 'selected' to the clicked date
+                        target.classList.add('selected');
+                        
+                        // Store selected date in localStorage (optional)
+                        const selectedDate = `${target.textContent} October 2025`;
+                        localStorage.setItem('selectedDate', selectedDate);
+                        
+                        // Redirect to step 2
+                        window.location.href = 'book-step2.html';
+                    }
+                });
+            }
+
+            // Modal functionality
+            const modal = document.getElementById('appointmentModal');
+            const closeModal = document.querySelector('.close-modal');
+            const appointmentCards = document.querySelectorAll('.appointment-card');
+
+            appointmentCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const date = card.querySelector('.appointment-date').textContent;
+                    const time = card.querySelector('.appointment-time').textContent;
+                    const status = card.querySelector('.status-badge').textContent;
+                    
+                    const modalContent = document.getElementById('modalContent');
+                    modalContent.innerHTML = `
+                        <p><strong>Date:</strong> ${date}</p>
+                        <p><strong>Time:</strong> ${time}</p>
+                        <p><strong>Status:</strong> ${status}</p>
+                        <p>Would you like to manage this appointment?</p>
+                        <button class="btn-primary" onclick="manageAppointment()">Manage Appointment</button>
+                    `;
+                    
+                    modal.style.display = 'block';
+                });
+            });
+
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        function manageAppointment() {
+            window.location.href = 'manage-appointments.html';
+        }
+    </script>
+</body>
+</html>

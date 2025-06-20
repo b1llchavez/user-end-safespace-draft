@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace PH - Report Violation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <img src="https://i.ibb.co/qYYZs46L/logo.png" alt="SafeSpace PH Logo" class="logo">
+                <span class="app-name">SafeSpace PH</span>
+                <span class="menu-icon material-icons" id="menuToggle">menu</span>
+            </div>
+            <div class="menu" id="sidebarMenu">
+                <a href="index.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </div>
+                </a>
+                <a href="report-violation.html" class="menu-link active">
+                    <div class="menu-item active">
+                        <span class="material-icons">gavel</span>
+                        Report Violation
+                    </div>
+                </a>
+                <a href="book-appointment.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">book_online</span>
+                        Book Appointment
+                    </div>
+                </a>
+                <a href="manage-appointments.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">event</span>
+                        Manage Appointments
+                    </div>
+                </a>
+                <a href="privacy-policy.html" class="menu-link">
+                    <div class="menu-item">
+                        <span class="material-icons">lock</span>
+                        Privacy Policy
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+             <div class="main-content">
+            <div class="top-bar-with-header">
+                <div class="form-header-section">
+                    <h1>Report Violation Form.</h1>
+                    <p class="subtitle">WE CAN HELP TO PROTECT YOU.</p>
+                </div>
+                <div class="user-info">
+                    <span class="user-avatar">BM</span>
+                    <span class="username">Bill</span>
+                    <span class="material-icons expand-icon">expand_more</span>
+                </div>
+            </div>
+
+                <div class="report-form-section">
+                    <div class="form-content">
+                        <section class="instructions-section">
+                            <p class="intro-text">
+                                We are here to listen, document, and act.<br>
+                                If you have experienced or witnessed a violation under the Safe Spaces Act — whether in a public area, online, school, or workplace — you can report it through this confidential form.<br>
+                            </p>
+                            <h3>Instructions</h3>
+                            <ol>
+                                <li>Provide clear and honest details about the incident.</li>
+                                <li>You may choose to report anonymously, but giving your contact information will help us provide support and connect you with legal help if needed.</li>
+                                <li>All information submitted is kept strictly confidential and used only to assist you or take appropriate action.</li>
+                            </ol>
+                        </section>
+
+                        <section class="personal-info-section">
+                            <h3>Contact Information <span style="font-weight:400; color:#888; font-size:0.95em;">(Optional)</span></h3>
+                            <div class="input-group">
+                                <label for="your-name">Your Name</label>
+                                <input type="text" id="your-name" placeholder="Optional">
+                            </div>
+                            <div class="input-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" placeholder="Optional">
+                            </div>
+                            <div class="input-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="Optional">
+                            </div>
+                        </section>
+
+                        <section class="form-fields-section">
+                            <h3>Incident Details</h3>
+                            <div class="form-group">
+                                <label>Type of Violation</label>
+                                <div class="button-group">
+                                    <button class="type-button active">Public Harassment</button>
+                                    <button class="type-button">Online Harassment</button>
+                                    <button class="type-button">Workplace/School Harassment</button>
+                                    <button class="type-button">Others</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description of the Incident</label>
+                                <textarea id="description" placeholder="Type your description here..."></textarea>
+                                <p class="hint-text">This should be a comprehensive description.</p>
+                            </div>  
+
+                            <div class="form-group">
+                                <label>Do you wish to request legal consultation?</label>
+                                <div class="button-group">
+                                    <button class="yes-no-button">Yes</button>
+                                    <button class="yes-no-button active">No</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Do you have any supporting files?</label>
+                                <input type="file" id="fileInput" multiple style="display: none">
+                                <button class="upload-button" onclick="document.getElementById('fileInput').click()">Upload File</button>
+                                <div id="fileList" class="file-list"></div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="additional-notes">Additional Notes or Questions</label>
+                                <textarea id="additional-notes" placeholder="Type your notes here..." class="description-box"></textarea>
+                                <p class="hint-text">Optional</p>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="consent">
+                                <label for="consent">By submitting this form, you agree that the information you've shared will be used to assess your case and, if requested, connect you with pro bono legal assistance.</label>
+                            </div>
+
+                            <button type="submit" class="submit-report-button" id="submitReportBtn">Submit Report</button>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebarMenu = document.getElementById('sidebarMenu');
+
+            menuToggle.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent the click from immediately propagating to the document
+                sidebarMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!sidebarMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    sidebarMenu.classList.remove('active');
+                }
+            });
+
+            // Submit button functionality
+            const submitReportBtn = document.getElementById('submitReportBtn');
+            if (submitReportBtn) {
+                submitReportBtn.addEventListener('click', function() {
+                    // Add any validation logic here if needed
+
+                    // Redirect to success page
+                    window.location.href = 'success-report.html';
+                });
+            }
+
+            // File upload functionality
+            const fileInput = document.getElementById('fileInput');
+            const fileList = document.getElementById('fileList');
+
+            fileInput.addEventListener('change', function(e) {
+                fileList.innerHTML = ''; // Clear previous files
+                const files = Array.from(e.target.files);
+                
+                files.forEach(file => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    
+                    const fileName = document.createElement('span');
+                    fileName.textContent = file.name;
+                    
+                    const removeBtn = document.createElement('span');
+                    removeBtn.textContent = '×';
+                    removeBtn.className = 'remove-file';
+                    removeBtn.onclick = function() {
+                        fileItem.remove();
+                    };
+                    
+                    fileItem.appendChild(fileName);
+                    fileItem.appendChild(removeBtn);
+                    fileList.appendChild(fileItem);
+                });
+            });
+
+            // Type buttons functionality
+            const typeButtons = document.querySelectorAll('.type-button');
+            typeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all type buttons
+                    typeButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+
+            // Yes/No buttons functionality
+            const yesNoButtons = document.querySelectorAll('.yes-no-button');
+            yesNoButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all yes/no buttons
+                    yesNoButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
